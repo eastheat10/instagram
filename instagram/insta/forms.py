@@ -6,7 +6,7 @@ from .models import Post, CustomUser, Comment, Hashtag
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'content', 'image', 'hashtag_field']
+        fields = ['content', 'image', 'hashtag_field']
 
 class SigninForm(forms.ModelForm):
     class Meta:
@@ -22,7 +22,7 @@ class UserForm(forms.ModelForm):
         help_texts = {
             'username': None,
         }
-        fields = ['username', 'email', 'password', 'nickname']
+        fields = ['profile_image','username', 'email', 'password', 'nickname']
 
 class CommentForm(forms.ModelForm):
     class Meta:

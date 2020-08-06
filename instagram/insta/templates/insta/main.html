@@ -1,93 +1,17 @@
 {% extends 'insta/base.html' %}
 {% load static %}
 {% block header %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body{
-            
-            background-color: #efefef;
-        }
-        .username {
-            font-weight: bold;
-        }
-
-        .dm {
-            width: 37px;
-            height: 37px;
-        }
-
-        .main{
-            justify-content:center;
-            height: 923px;
-            width: 614px;
-        }
-        
-        .card{
-            border: 1px solid #4a4a4a;
-        }
-
-        .comment{
-            margin: 0rem 1rem 1rem 1rem;
-            border-bottom: 1px solid #efefef;
-            padding-bottom: 1rem;
-        }
-
-        header img{
-            border-radius: 50%;
-            height: 30px;
-            width: 30px;
-            border: 1px solid #efefef;
-        }
-        
-        .card_image img{
-            width: 100%;
-        }
-
-        .comment_form form{
-            padding-bottom: 0px;
-            display: flex;
-            flex-direction: row;
-        }
-
-        .comment_form form input{
-            width: 550px;
-            height: 30px;
-            border: none;
-            padding-left: 10px;
-        }
-        .info i{
-            font-size: 1.5rem;
-        }
-
-        .main_left{
-
-        }
-        
-        .comment_form form #submit{
-            border: none;
-            background-color: white;
-        }
-
-        .info{
-            display: flex;
-            justify-content: space-between;
-        }
-    </style>
-</head>
-<body>
-
-
-{% for post in posts %}
 <div class="main">
     <div class="main_left">
+        
+{% for post in posts %}
         <div class="card">
             <header>
+                <div class="info123">
                 <img src="" alt="">
                 <div class="username">{{ post.writer }}</div><br>
+                </div>
+                <img class="dot3" src="{% static 'insta/img/dot3.png' %}">
             </header>
             <div class="card_image">
                 {% if post.image %}
@@ -120,33 +44,54 @@
             <p> {{ post.likes.count }}명이 좋아합니다 </p>
             
             <div class="info">
-                <span class="username">{{ post.writer }}</span> &nbsp; {{ post.content }}<br>
+                <div>
+                <span class="username">{{ post.writer }}</span> &nbsp; 
+                {{ post.content }}
+                </div>
+            </div><br>
                 <span>
                     {% for hashtag in post.hashtags.all %}
-                      <a href="/hashtag/{{ hashtag.name }}"> {{ hashtag.name }} </a>
+                      <a href="/hashtag/{{ hashtag.name }}"> #{{ hashtag.name }} </a>
                     {% endfor %}
-                  </span><br>
-            </div>
+                </span>    <br>
+            
             <div class="comment_form">
                 {% for comment in post.comments.all %}
-                    <p> {{ comment.c_writer }} : {{ comment.text }}</p>
+                    <p> <span class="username">{{ comment.c_writer }}</span> &nbsp; {{ comment.text }}</p>
                 {% endfor %}
             </div>
             <div class="comment">
                 <form method="POST" action="/comment/{{ post.id }}">
                     {% csrf_token %}
-                    {{ comment_form.as_p }}
+                    {{ comment_form }}
                     <input type="submit" value="submit">
-                  </form>
+                </form>
+            </div>
+        </div><br>
+        {% endfor %}
+    </div>
+
+    <div class="main_right">
+        <div class="right_nav">
+            <div id="fixed_nav">
+                <!-- <button href="{#% url 'new' %}">글쓰기</button> -->
+                <header>
+                    <img src="{% static 'insta/img/apple.jpg' %}" alt="profile">
+                    
+                        {{ user.username }}
+                        {{ users.nickname }}
+                    
+                </header><br>
+                <div class="story">
+                    <h6>회원님을 위해 추천하지 않음</h6>
+                </div><br><br>
+                <div class="suggest">
+                    소개·도움말·홍보 센터·API·채용 정보<br>
+                    개인정보처리방침약관·위치·인기 계정·해시태그·언어
+                </div>
             </div>
         </div>
-    </div><br>
-    {% endfor %}
-    <div class="main_right">
-
     </div>
+<br>
 </div>
 {% endblock %}
-    
-</body>
-</html>

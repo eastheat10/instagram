@@ -7,25 +7,31 @@ from django.http import HttpResponse
 
 # Create your views here.
 
+def base(request):
+    users = CustomUser.objects.all()
+    return render(request, 'insta/base.html', {'users': users})
+
 def main(request):
     if not request.user.is_active:
         return redirect('signin')
 
     else:
+        users = CustomUser.objects.all()
         posts = Post.objects.all()
         comment_form = CommentForm
-        return render(request, 'insta/main.html', {'posts': posts, 'comment_form': comment_form})
+        return render(request, 'insta/main.html', {'posts': posts, 'comment_form': comment_form, 
+        'users': users})
 
 def create(request):
     if not request.user.is_active:
-        return HttpResponse("signin please")
-    
+        return HttpResponse("Sign In Please")
+
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.writer = request.user
-            
+
             hashtag_field = form.cleaned_data['hashtag_field']
             str_hashtags = hashtag_field.split('#')
             list_hashtags = list()
@@ -43,9 +49,8 @@ def create(request):
             post.hashtags.add(*list_hashtags)
             #form.save_m2m
             return redirect('main') 
-
-        else:
-            form = PostForm()
+    else:
+        form = PostForm()
         return render(request, 'insta/create.html', {'form': form})
 
 def update(request):
@@ -66,7 +71,9 @@ def delete(request, pk):
     return redirect('main')
 
 def mypage(request):
-    return render(request, 'insta/mypage.html')
+    users = CustomUser.objects.all()
+    userForms = UserForm
+    return render(request, 'insta/mypage.html', {"userForms": userForms})
 
 def signin(request):
     signin_form = SigninForm()
@@ -108,7 +115,7 @@ def comment(request, post_id):
             comment = form.save(commit=False)
             comment.c_writer = request.user
             comment.post_id = post
-            commnet.text = form.cleaned_data['text']
+            comment.text = form.cleaned_data['text']
             comment.save()
             return redirect('main') 
 

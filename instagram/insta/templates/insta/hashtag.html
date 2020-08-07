@@ -22,9 +22,10 @@
               {{ hashtag.name }}
             {% endfor %}
           </span><br>
-          
+          <!--
           <a href="{% url 'update' pk=post.pk %}"> 수정하기 </a>
           <a href="{% url 'delete' pk=post.pk %}"> 삭제하기 </a>
+          -->
         </div>
       
           {% csrf_token %}

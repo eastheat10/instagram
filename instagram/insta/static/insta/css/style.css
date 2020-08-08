@@ -5,12 +5,6 @@
     font-style: normal; 
 }
 
-a{
-    text-decoration: none
-}
-a:link { color: red; text-decoration: none;}
-a:visited { color: black; text-decoration: none;}
-a:hover { color: blue; text-decoration: underline;}
 
 .instalogo{
     width: 103px;
@@ -51,15 +45,13 @@ a:hover { color: blue; text-decoration: underline;}
     border-radius: 3px;
     margin-bottom: 5px;
 }
-.main{
-    background-color: #fafafa;
-    
-}
+
 
 .container{
     display: flex;
     flex-direction: row;
     justify-content:center;
+    margin-right: 13rem;
 }
 
 .profile_image{
@@ -78,6 +70,10 @@ body{
 .username {
     font-weight: bold;
 }
+.username a {
+    margin-left: 10px;
+    display: inline;
+}
 
 .dm {
     width: 37px;
@@ -86,7 +82,6 @@ body{
 
 .main{
     background-color: #fafafa;
-    margin-right: 13rem;
 }
 
 .card{
@@ -155,10 +150,12 @@ body {
     float:left;
 }
 .dot3{
+    display: right;
     margin-top: 20px;
     margin-right: 5px;
-    float:right;
+    float: right;
 }
+
 .story{
     font-family: 'Arita-dotum-Medium';
     font-weight: bold;
@@ -173,4 +170,8 @@ body {
     width: auto; height: auto;
     max-width: 100px;
     max-height: 100px;
+}
+
+.hashtag_post{
+    margin-left: 13rem;
 }

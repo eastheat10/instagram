@@ -1,0 +1,17 @@
+body {
+    background-color: #fafafa;
+}
+
+.mainpage{
+    margin: auto;
+    width: 350px;
+    height: auto;
+    top: 50%;
+    left: 50%;
+}
+
+.signin {
+    position: absolute;
+    top: 50%;
+    margin-top: -50px;
+}

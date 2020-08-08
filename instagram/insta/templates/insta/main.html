@@ -12,9 +12,9 @@
                 <div class="username"><a href="{% url 'mypage' pk=post.writer %}" style="text-decoration:none">
                     {{ post.writer }}
                 </a>
-                <br>
-                </div>
                 <img class="dot3" src="{% static 'insta/img/dot3.png' %}">
+                </div>
+                
             </header>
             <div class="card_image">
                 {% if post.image %}

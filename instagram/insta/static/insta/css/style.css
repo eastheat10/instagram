@@ -5,6 +5,13 @@
     font-style: normal; 
 }
 
+a{
+    text-decoration: none
+}
+a:link { color: red; text-decoration: none;}
+a:visited { color: black; text-decoration: none;}
+a:hover { color: blue; text-decoration: underline;}
+
 .instalogo{
     width: 103px;
     height: 29px;
@@ -37,6 +44,7 @@
 .heart{
     width: 45px; 
     height: 45px;
+    margin-top: 15px;
 }
 #search_input{
     border: solid 1px #dbdbdb;
@@ -160,4 +168,9 @@ body {
     font-family: 'Arita-dotum-Medium';
     font-size: 10px;
     color: #8f8f8f;
+}
+.max-small {
+    width: auto; height: auto;
+    max-width: 100px;
+    max-height: 100px;
 }

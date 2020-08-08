@@ -70,10 +70,10 @@ def delete(request, pk):
     post.delete()
     return redirect('main')
 
-def mypage(request):
-    users = CustomUser.objects.all()
-    userForms = UserForm
-    return render(request, 'insta/mypage.html', {"userForms": userForms})
+def mypage(request, pk):
+    users = CustomUser.objects.get(username=pk)
+    posts = Post.objects.filter(writer=users)
+    return render(request, 'insta/mypage.html', {"users": users, "posts": posts})
 
 def signin(request):
     signin_form = SigninForm()

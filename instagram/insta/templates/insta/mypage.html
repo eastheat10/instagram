@@ -1,12 +1,6 @@
 {% extends 'insta/base.html' %}
 {% load static %}
 {% block header %}
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    <table>
-      {{ userForms.as_table }}
-    </table>
-    <input type="submit" value="submit">
-</form>
+<h1>hi</h1>
     
 {% endblock %}

@@ -9,7 +9,10 @@
             <header>
                 <div class="info123">
                 <img src="" alt="">
-                <div class="username">{{ post.writer }}</div><br>
+                <div class="username"><a href="{% url 'mypage' pk=post.writer %}" style="text-decoration:none">
+                    {{ post.writer }}
+                </a>
+                <br>
                 </div>
                 <img class="dot3" src="{% static 'insta/img/dot3.png' %}">
             </header>
@@ -45,13 +48,16 @@
             
             <div class="info">
                 <div>
-                <span class="username">{{ post.writer }}</span> &nbsp; 
+                <a href="{% url 'mypage' pk=post.writer %}" style="text-decoration:none">
+                    {{ post.writer }}
+                </a> &nbsp; 
                 {{ post.content }}
                 </div>
             </div><br>
                 <span>
                     {% for hashtag in post.hashtags.all %}
-                      <a href="/hashtag/{{ hashtag.name }}"> #{{ hashtag.name }} </a>
+                      <a class="hashtag" href="/hashtag/{{ hashtag.name }}" style="text-decoration:none"> 
+                        #{{ hashtag.name }} </a>
                     {% endfor %}
                 </span>    <br>
             

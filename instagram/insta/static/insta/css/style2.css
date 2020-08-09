@@ -14,4 +14,17 @@ body {
     position: absolute;
     top: 50%;
     margin-top: -50px;
+    width: 350px;
+    height: 378px;
+    border: 1px gray solid;
+}
+
+.instalogo{
+    width: 175px;
+    height: 51px;
+    margin: 22px 86px;
+}
+
+.signform label {
+    opacity: 0;
 }

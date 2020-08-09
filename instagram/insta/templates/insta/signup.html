@@ -1,19 +1,35 @@
-{% load static %}
-
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instagram</title>
+    <link rel="stylesheet"  type="text/css" href="{% static 'insta/css/signup.css' %}">
 </head>
 <body>
-    <form method="POST">
-        {% csrf_token %}
-        <table>
-          {{ form.as_table }}
-        </table>
-        <input type="submit" value="submit">
-    </form>
+<div class="mainpage">
+    <div class="signin">
+        <img class="instalogo" src="{% static 'insta/img/insta_logo.png' %}">
+    
+        <div class="signform">
+            <form method="POST">
+                {% csrf_token %}
+                <table>
+                  {{ form.as_table }}
+                </table>
+                <input class="signupbutton" type="submit" value="가입">
+            </form>
+        </div>
+        <div class="gotosignup">
+            계정이 있으신가요? <a href="{% url 'signup' %}">로그인</a>
+        </div>
+            
+    </div>
+</div>
 </body>
 </html>
+{% load static %}
+
+    
+

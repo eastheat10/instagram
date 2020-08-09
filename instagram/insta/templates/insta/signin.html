@@ -1,17 +1,33 @@
-{% extends 'insta/base2.html' %}{% load static %}
-{% block content %}
-
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <link rel="stylesheet"  type="text/css" href="{% static 'insta/css/signin.css' %}">
+</head>
+<body>
+<div class="mainpage">
     <div class="signin">
-    <div>
-        <form method="POST" action="/signin">
-            {% csrf_token %}
-            {{ signin_form.as_p }}
-            <input type="submit" value="submit">
-        </form>
+        <img class="instalogo" src="{% static 'insta/img/insta_logo.png' %}">
+    
+        <div class="signform">
+            <form method="POST" action="/signin">
+                {% csrf_token %}
+                {{ signin_form.as_p }}
+                <input class="signinbutton" type="submit" value="로그인">
+            </form>
+        </div>
+        <div class="gotosignup">
+            계정이 없으신가요? <a href="{% url 'signup' %}">가입하기</a>
+        </div>
+            
     </div>
-    <div class="signup">
-        <a href="{% url 'signup' %}">가입하기</a>
-    </div>
-    </div>
+</div>
+</body>
+</html>
+{% load static %}
 
-{% endblock %}
+    
+

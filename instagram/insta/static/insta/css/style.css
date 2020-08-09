@@ -7,10 +7,11 @@
 
 
 .instalogo{
-    width: 103px;
-    height: 29px;
+    margin-top: 10px;
+    width: 90px;
+    height: 20px;
 }
-.right .home, .dm{
+.right .home {
     width: 45px; 
     height: 45px;
 }
@@ -67,12 +68,14 @@ body{
     justify-content:center;
     background-color: #fafafa;
 }
+
 .username {
     font-weight: bold;
 }
+
 .username a {
+    margin-top: 20px;
     margin-left: 10px;
-    display: inline;
 }
 
 .dm {
@@ -87,12 +90,19 @@ body{
 .card{
     border: 1px solid #4a4a4a;
     width:614px;
+    background-color: #ffffff;
 }
 
 .comment{
     margin: 0rem 1rem 1rem 1rem;
     border-bottom: 1px solid #fafafa;
     padding-bottom: 1rem;
+}
+
+header {
+    height: 40px;
+    padding-top: 20px;
+    padding-left: 5px;
 }
 
 header img{
@@ -104,6 +114,7 @@ header img{
 
 .card_image img{
     width: 100%;
+    margin-top: 10px;
 }
 
 .comment_form form{
@@ -146,9 +157,8 @@ header img{
 body {
     padding-top: 75px;
 }
-.info123{
-    float:left;
-}
+
+
 .dot3{
     display: right;
     margin-top: 20px;
@@ -174,4 +184,17 @@ body {
 
 .hashtag_post{
     margin-left: 13rem;
+}
+
+.card-bottom {
+    margin-left: 15px;
+}
+
+.function1 {
+    margin-top: 13px;
+}
+
+.change {
+    float: right;
+    margin-right: 20px;
 }

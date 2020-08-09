@@ -53,7 +53,7 @@ def create(request):
         form = PostForm()
         return render(request, 'insta/create.html', {'form': form})
 
-def update(request):
+def update(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
         form = PostForm(request.POST, instance=post)

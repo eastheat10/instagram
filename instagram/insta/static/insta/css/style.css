@@ -198,3 +198,32 @@ body {
     float: right;
     margin-right: 20px;
 }
+.createForm {
+    margin-top: 20px;
+    margin-left: 50px;
+    border: 1px #dbdbdb solid;
+    padding: 50px 30px;
+}
+
+.createtable {
+    font-family: 'Arita-dotum-Medium'; 
+}
+
+.createButton {
+    width: 200px;
+    height: 21px;
+    background-color: #0095f6;
+    margin-left: 100px;
+    margin-top: 20px;
+    font-size: 10px;
+    border: 1px solid gray;
+    color: ffffff;
+    border-radius: 5px;
+}
+
+.createForm .instalogo {
+    margin-bottom: 30px;
+    margin-left: 120px;
+    width: 160px;
+    height: 51px;
+}

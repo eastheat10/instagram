@@ -11,6 +11,7 @@ class Post(models.Model):
     content = models.TextField()
     image = models.ImageField(upload_to='images/', blank=True)
     writer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="writer", default="")
+    place = models.CharField(max_length=50)
 
     likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="likes")
 

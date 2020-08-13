@@ -227,3 +227,13 @@ body {
     width: 160px;
     height: 51px;
 }
+
+.place {
+    margin-left: 210px;
+    font-family: 'Arita-dotum-Medium'; 
+}
+
+.userinfo {
+    float: right;
+    font-family: 'Arita-dotum-Medium'; 
+}

@@ -59,6 +59,10 @@ def update(request, pk):
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
             form = form.save(commit=False)
+
+            post.content = form.cleaned_data['content']
+            post.image = form.cleaned_data['image']
+
             form.save()
             return redirect('main')
     else:

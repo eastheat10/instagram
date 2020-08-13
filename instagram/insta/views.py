@@ -57,12 +57,10 @@ def update(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
         form = PostForm(request.POST, instance=post)
+
         if form.is_valid():
             form = form.save(commit=False)
-
-            post.content = form.cleaned_data['content']
-            post.image = form.cleaned_data['image']
-
+            post.image = request.FILES['image']
             form.save()
             return redirect('main')
     else:

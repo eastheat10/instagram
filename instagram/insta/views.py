@@ -14,7 +14,6 @@ def base(request):
 def main(request):
     if not request.user.is_active:
         return redirect('signin')
-
     else:
         users = CustomUser.objects.all()
         posts = Post.objects.all()
@@ -37,13 +36,16 @@ def create(request):
             list_hashtags = list()
 
             for hashtag in str_hashtags:
-                if Hashtag.objects.filter(name=hashtag):
-                    list_hashtags.append(Hashtag.objects.get(name=hashtag))
-                else:
-                    temp_hashtag = HashtagForm().save(commit=False)
-                    temp_hashtag.name = hashtag
-                    temp_hashtag.save()
-                    list_hashtags.append(temp_hashtag)
+                if hashtag == "":
+                        continue
+                else: 
+                    if Hashtag.objects.filter(name=hashtag):
+                        list_hashtags.append(Hashtag.objects.get(name=hashtag))
+                    else:
+                        temp_hashtag = HashtagForm().save(commit=False)
+                        temp_hashtag.name = hashtag
+                        temp_hashtag.save()
+                        list_hashtags.append(temp_hashtag)
 
             post.save()
             post.hashtags.add(*list_hashtags)
@@ -56,13 +58,31 @@ def create(request):
 def update(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
-        form = PostForm(request.POST, instance=post)
+        form = PostForm(request.POST, request.FILES ,instance=post)
 
         if form.is_valid():
-            form = form.save(commit=False)
-            post.image = request.FILES['image']
-            form.save()
-            return redirect('main')
+            post = form.save(commit=False)
+            post.writer = request.user
+
+            hashtag_field = form.cleaned_data['hashtag_field']
+            str_hashtags = hashtag_field.split('#')
+            list_hashtags = list()
+
+            for hashtag in str_hashtags:
+                if hashtag == "":
+                        continue
+                else: 
+                    if Hashtag.objects.filter(name=hashtag):
+                        list_hashtags.append(Hashtag.objects.get(name=hashtag))
+                    else:
+                        temp_hashtag = HashtagForm().save(commit=False)
+                        temp_hashtag.name = hashtag
+                        temp_hashtag.save()
+                        list_hashtags.append(temp_hashtag)
+
+            post.save()
+            post.hashtags.add(*list_hashtags)
+            return redirect('main') 
     else:
         form = PostForm(instance=post)
         return render(request, 'insta/create.html', {'form': form})
@@ -141,3 +161,12 @@ def like(request, pk):
 
 def search(request):
     pass
+
+
+def profile(request):
+    return render(request, 'insta/profile.html')
+
+def index(request):
+    return render(request, 'insta/index.html')
+def new_post(request):
+    return render(request, 'insta/new_post.html')

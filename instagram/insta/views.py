@@ -16,7 +16,7 @@ def main(request):
         return redirect('signin')
     else:
         users = CustomUser.objects.all()
-        posts = Post.objects.all()
+        posts = Post.objects.all().order_by('-id')
         comment_form = CommentForm
         return render(request, 'insta/main.html', {'posts': posts, 'comment_form': comment_form, 
         'users': users})
@@ -94,7 +94,7 @@ def delete(request, pk):
 
 def mypage(request, pk):
     users = CustomUser.objects.get(username=pk)
-    posts = Post.objects.filter(writer=users)
+    posts = Post.objects.filter(writer=users).order_by('-id')
     return render(request, 'insta/mypage.html', {"users": users, "posts": posts})
 
 def signin(request):
@@ -161,12 +161,3 @@ def like(request, pk):
 
 def search(request):
     pass
-
-
-def profile(request):
-    return render(request, 'insta/profile.html')
-
-def index(request):
-    return render(request, 'insta/index.html')
-def new_post(request):
-    return render(request, 'insta/new_post.html')
